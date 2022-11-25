@@ -34,3 +34,7 @@ There are few ways to integrate the two stacks by seperating the app or combinin
 
 For the next practice project might try out (2) seperating the two.
 
+### Additional Remark
+Most of the time combining React-Rails, the structure goes with the React UI consuming the API from rails; figured why not use some of the features Rails do provide together like:-
+- ability to build other pages with .erb files for pages that dont require React. 
+- handling security and authentication with Devise gem and for handling API request then together with Turbo Drive (acts like SPA); the app gets to feel seamless logging in and out in React (alternate ways is using React Router on the frontend)

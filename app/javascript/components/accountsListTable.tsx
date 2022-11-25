@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { Table, Pagination, TextInput, Container, Button } from "@mantine/core";
+import { DateRangePicker, DateRangePickerValue } from "@mantine/dates";
+import TableHead from "./tableHeader";
+import { TableSortProps, RowData } from "../types";
+import React from "react";
 
-
-
+// Display table rows based on ROWS_PER_PAGE constant
 const PAGE_SIZE = 10;
-
-const AccountsListTable: NextPage<TableSortProps> = ({ accounts, loading }) => {
-    const accountsData = useSelector((state: RootState) => state.bankAccountsList.accounts)
-    const [search, setSearch] = useState("");
-    const [sortedData, setSortedData] = useState<RowData[]>(accountsData);
+const AccountsListTable = ({ accounts }: TableSortProps) => {
+    const [search, setSearch] = useState('');
+    const [sortedData, setSortedData] = useState(accounts);
     const [sortBy, setSortBy] = useState<keyof RowData>("id");
     const [page, setPage] = useState(1);
     const [reverseSortDirection, setReverseSortDirection] = useState(false);
@@ -62,13 +63,14 @@ const AccountsListTable: NextPage<TableSortProps> = ({ accounts, loading }) => {
             return filterData;
         } else {
             let sortedRows: RowData[] = [];
+
             if (reversed) {
                 sortedRows = [...data].sort((a, b) =>
                     a[sortBy]! < b[sortBy]! ? 1 : -1
                 );
             } else {
                 sortedRows = [...data].sort((a, b) =>
-                    a[sortBy]! > b[sortBy]! ? 1 : -1
+                    a[sortBy]! < b[sortBy]! ? -1 : 1
                 );
             }
 
@@ -83,7 +85,7 @@ const AccountsListTable: NextPage<TableSortProps> = ({ accounts, loading }) => {
             return filterData;
         }
     };
-    // pagination mantine props pass to table component
+    // pagination
     const displayRows = (page: number, data: RowData[]) => {
         const dataRow = data.slice(
             (page - 1) * PAGE_SIZE,
@@ -108,10 +110,9 @@ const AccountsListTable: NextPage<TableSortProps> = ({ accounts, loading }) => {
             </tr>
         ));
         return rows;
-    };
-    // search input function with slice 
-    const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const value = event.currentTarget.value;
+    };// Link to account details page
+    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.currentTarget.value;
         setSearch(value);
         setSortedData(
             sortDataByTitle(accounts, {
@@ -122,7 +123,6 @@ const AccountsListTable: NextPage<TableSortProps> = ({ accounts, loading }) => {
             })
         );
     };
-
     // handle date range picker change
     const handleDateChange = (e: DateRangePickerValue) => {
         const value = e;
@@ -136,7 +136,6 @@ const AccountsListTable: NextPage<TableSortProps> = ({ accounts, loading }) => {
             })
         );
     };
-
     return (
         <>
             <h3>Search by Accounts Description</h3>
@@ -171,14 +170,13 @@ const AccountsListTable: NextPage<TableSortProps> = ({ accounts, loading }) => {
                     }
                 />
             </div>
-            <Table
-                horizontalSpacing="sm" verticalSpacing="xs" striped highlightOnHover withBorder withColumnBorders>
+            <Table horizontalSpacing="sm" verticalSpacing="xs" striped highlightOnHover withBorder withColumnBorders>
                 <thead>
                     <tr>
                         <TableHead
                             reversed={reverseSortDirection}
                             sorted={sortBy === "id"}
-                            onSort={() => sortData("id")}
+                            onSort={() => sortData("id")} q
                         >
                             Id
                         </TableHead>
@@ -233,4 +231,4 @@ const AccountsListTable: NextPage<TableSortProps> = ({ accounts, loading }) => {
         </>
     );
 }
-export default AccountsListTable
+export default AccountsListTable;

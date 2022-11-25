@@ -1,17 +1,16 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-
+import React from 'react'
+import { useState, useEffect } from 'react'
+import ReactDOM from 'react-dom/client'
+import AccountsListTable from "./accountsListTable";
 
 // interface arg to check valid TS syntax 
-interface AppProps {
-  arg: string;
-}
 
-const App = ({ arg }: AppProps) => {
-  return <div>{`Hello, ${arg}!`}</div>;
+const App = () => {
+  return (
+    <div>
+      <AccountsListTable accounts={accounts} loading={isLoading} />
+    </div>
+  );
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-  const rootEl = document.getElementById("root");
-  ReactDOM.render(<App arg="Rails 7 with ESBuild" />, rootEl);
-});
+ReactDOM.createRoot(document.getElementById('root')).render(<App />)
