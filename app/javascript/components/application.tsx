@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
+
 // interface arg to check valid TS syntax 
 interface AppProps {
   arg: string;
