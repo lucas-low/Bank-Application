@@ -27,3 +27,10 @@ While Rails follows MVC design pattern. Architectural design pattern for develop
 
 In the end decided to input the Redux architecture within the Rails MVC structure specifically with Rails as centralized API.
 
+There are few ways to integrate the two stacks by seperating the app or combining into 1 repo:-
+1. React-Rails-gem is 1 way to combine React-Rails app through the Babel transformer into Rails' asset pipeline. 
+2. Another way is using react-on-rails gem that uses ES6 and Webpack without need to rely on Rail's pipeline.
+3. I went with ESBuild that supports React + Typescript  bundling JS delivered via Rails asset pipeline in the same repo due to the size of this project and it develops faster.
+
+For the next practice project might try out (2) seperating the two.
+
