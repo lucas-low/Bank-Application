@@ -1,3 +1,12 @@
+### To start
+```
+- Root
+bundle install
+rails s 
+- Frontend
+yarn install
+yarn start
+```
 # Purpose
 This is rebuilt of dashboard with Rails backend and react with typescript. Plus practice of what I pick up from Michael Hartl's Ruby on Rails 7th edition book.
 
