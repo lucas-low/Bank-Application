@@ -117,15 +117,18 @@ const AccountsTable = ({ accounts, loading }) => {
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.currentTarget.value;
         setSearch(value);
-        setSortedData(
-            sortDataByTitle(accounts, {
-                sortBy,
-                reversed: reverseSortDirection,
-                search: value,
-                dateRange: dateRange,
-            })
-        );
-    };
+        setTimeout(() => {
+            setSortedData(
+                sortDataByTitle(accounts, {
+                    sortBy,
+                    reversed: reverseSortDirection,
+                    search: value,
+                    dateRange: dateRange,
+                })
+            );
+        }, 400)
+        setPage(1)
+    }
 
     // handle date range picker change
     const handleDateChange = (e: DateRangePickerValue) => {
