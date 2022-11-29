@@ -1,13 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
-export interface RowData {
-    transactionDate: string;
-    description: string;
-    category: string;
-    debit: number | null;
-    credit: number | null;
-    id: number;
-}
+import { RowData } from "../types";
+import { fetchAccounts } from './tableAPI'
 
 export interface BankAccountsListState {
     loading: boolean;
@@ -23,7 +16,7 @@ const initialState: BankAccountsListState = {
 export const fetchBankAccountsList = createAsyncThunk(
     'bankAccountsList/fetchBankAccountsList',
     async () => {
-        const response = await fetch('/api/bank');
+        const response = await fetchAccounts();
         const data = await response.json();
         const { accounts } = JSON.parse(data);
         return accounts;
@@ -50,4 +43,4 @@ export const bankAccountsListSlice = createSlice({
         });
     },
 });
-export default bankAccountsListSlice.reducer
+export default bankAccountsListSlice
