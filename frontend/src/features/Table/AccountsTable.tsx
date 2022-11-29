@@ -5,10 +5,11 @@ import { Table, Pagination, TextInput, Container, Button } from "@mantine/core";
 import { DateRangePicker, DateRangePickerValue } from "@mantine/dates";
 import { TableSortProps, RowData } from '../types';
 import { RootState } from '../../app/store';
+import TableHeader from './TableHeader';
 
 const PAGE_SIZE = 10;
 
-export const AccountsTable = () => ({ accounts, loading }) => {
+const AccountsTable = ({ accounts, loading }) => {
     const accountsData = useSelector((state: RootState) => state.bankAccountsList.accounts)
     const [search, setSearch] = useState("");
     const [sortedData, setSortedData] = useState<RowData[]>(accountsData);
@@ -102,11 +103,11 @@ export const AccountsTable = () => ({ accounts, loading }) => {
                 <td>{row.credit}</td>
                 <td>{row.transactionDate}</td>
                 <td>
-                    <Link href={`/accountDetails/${row.id}`}>
+                    {/* <Link href={`/accountDetails/${row.id}`}>
                         <Button id="more-details">
                             more
                         </Button>
-                    </Link>
+                    </Link> */}
                 </td>
             </tr>
         ));
@@ -178,44 +179,44 @@ export const AccountsTable = () => ({ accounts, loading }) => {
                 horizontalSpacing="sm" verticalSpacing="xs" striped highlightOnHover withBorder withColumnBorders>
                 <thead>
                     <tr>
-                        <TableHead
+                        <TableHeader
                             reversed={reverseSortDirection}
                             sorted={sortBy === "id"}
                             onSort={() => sortData("id")}
                         >
                             Id
-                        </TableHead>
-                        <TableHead
+                        </TableHeader>
+                        <TableHeader
                             reversed={reverseSortDirection}
                             sorted={sortBy === "description"}
                             onSort={() => sortData("description")}
                         >
                             Description
-                        </TableHead>
-                        <TableHead
+                        </TableHeader>
+                        <TableHeader
                             reversed={reverseSortDirection}
                             sorted={sortBy === "category"}
                             onSort={() => sortData("category")}
                         >Category
-                        </TableHead>
-                        <TableHead
+                        </TableHeader>
+                        <TableHeader
                             reversed={reverseSortDirection}
                             sorted={sortBy === "debit"}
                             onSort={() => sortData("debit")}
                         >Debit
-                        </TableHead>
-                        <TableHead
+                        </TableHeader>
+                        <TableHeader
                             reversed={reverseSortDirection}
                             sorted={sortBy === "credit"}
                             onSort={() => sortData("credit")}
                         >Credit
-                        </TableHead>
-                        <TableHead
+                        </TableHeader>
+                        <TableHeader
                             reversed={reverseSortDirection}
                             sorted={sortBy === "transactionDate"}
                             onSort={() => sortData("transactionDate")}
                         >Transaction Date
-                        </TableHead>
+                        </TableHeader>
                         <th>Details</th>
                     </tr>
                 </thead>
@@ -237,3 +238,4 @@ export const AccountsTable = () => ({ accounts, loading }) => {
     );
 }
 
+export default AccountsTable;

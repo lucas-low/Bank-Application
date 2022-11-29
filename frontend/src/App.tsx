@@ -1,27 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import AccountsTable from './features/Table/AccountsTable';
 import './App.css';
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchAccounts } from './features/Table/tableAPI'
+import { AppDispatch, RootState } from './app/store'
 
 function App() {
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
+        <AccountsTable />
       </header>
     </div>
   );

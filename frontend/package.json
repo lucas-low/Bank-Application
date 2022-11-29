@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.10.5",
     "@mantine/core": "^5.8.4",
     "@mantine/dates": "^5.8.4",
     "@mantine/hooks": "^5.8.4",
