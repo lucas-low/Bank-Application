@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src", // This must be specified if "paths" is.
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+, "features/AccountsListTable/AccountsListTable.test.js", "features/AccountsListTable/__test__/AccountsListTable.test.jsx", "features/AccountsListTable/AccountsListTable.test.tsa"  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
