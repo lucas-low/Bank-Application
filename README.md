@@ -7,6 +7,9 @@ Installation
 yarn install
 yarn dev
 ```
+#Update 1
+- fixed pagination bug from state not returning to page 1 after search change handler executes 
+- added debounce since the app was finish to imitate the restriction to api Call to backend
 
 ### Features
 - Table, date range filter, search filter, sorting, pagination
@@ -52,3 +55,5 @@ I used Mantine theme thats just an object to give the app uniform look and feel 
 
 ## Conclusions
 All in all, this was a great exercise,decide consider multiple technologies and learn new ones. Really had to make last minute time bound decisions due to my covid positive clash with the timelimit set for myself.
+
+
