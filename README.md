@@ -1,7 +1,7 @@
 #  Frontend by Lucas Low Yee Yung
 ### Purpose
 Quick within 72 hours built up data table from json file.
-
+![Lucas](https://user-images.githubusercontent.com/53358104/199412323-1aef3519-0bdb-47cd-81dc-a19644fd6c33.gif)
 Installation 
 ```
 yarn install
